@@ -4,27 +4,34 @@ body {
   margin: 0;
   text-align: center;
   font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 300;
 }
 
-/* line 9, ../sass/style.scss */
+/* line 10, ../sass/style.scss */
 a {
   color: inherit;
 }
 
-/* line 13, ../sass/style.scss */
+/* line 14, ../sass/style.scss */
 h2 {
   margin: 10px 0;
+  font-weight: 700;
 }
 
-/* line 17, ../sass/style.scss */
+/* line 19, ../sass/style.scss */
 .button {
-  display: inline-block;
+  display: none;
   padding: 20px;
   border: 1px solid black;
   border-radius: 15px;
 }
 
-/* line 23, ../sass/style.scss */
+/* line 25, ../sass/style.scss */
+.button.current {
+  display: inline-block;
+}
+
+/* line 29, ../sass/style.scss */
 .button-mini {
   display: inline-block;
   padding: 5px 15px;
@@ -33,7 +40,13 @@ h2 {
   border-radius: 10px;
 }
 
-/* line 31, ../sass/style.scss */
+/* line 37, ../sass/style.scss */
+.widget-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* line 42, ../sass/style.scss */
 .widget {
   position: relative;
   min-height: 300px;
@@ -42,12 +55,12 @@ h2 {
   background-color: #DDDDDD;
   overflow-x: hidden;
 }
-/* line 39, ../sass/style.scss */
+/* line 50, ../sass/style.scss */
 .widget .content {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 44, ../sass/style.scss */
+/* line 55, ../sass/style.scss */
 .widget .slide {
   display: none;
   position: absolute;
@@ -58,43 +71,44 @@ h2 {
   width: 100%;
   background-color: #DDDDDD;
 }
-/* line 54, ../sass/style.scss */
+/* line 65, ../sass/style.scss */
 .widget .slide::before {
   content: '';
   display: inline-block;
   height: 100%;
   vertical-align: middle;
 }
-/* line 60, ../sass/style.scss */
+/* line 71, ../sass/style.scss */
 .widget .slide.current {
   display: inline-block;
 }
-/* line 65, ../sass/style.scss */
+/* line 76, ../sass/style.scss */
 .widget img.profile-pic {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   background-color: #BBBBBB;
 }
-/* line 72, ../sass/style.scss */
+/* line 83, ../sass/style.scss */
 .widget .user-name {
   padding: 10px 0;
+  font-weight: 400;
 }
-/* line 77, ../sass/style.scss */
+/* line 89, ../sass/style.scss */
 .widget .links .left {
   display: inline-block;
   text-align: right;
   padding-right: 10px;
   border-right: 1px solid black;
 }
-/* line 83, ../sass/style.scss */
+/* line 95, ../sass/style.scss */
 .widget .links .right {
   display: inline-block;
   text-align: left;
   padding-left: 10px;
   border-left: 1px solid black;
 }
-/* line 91, ../sass/style.scss */
+/* line 103, ../sass/style.scss */
 .widget input.error {
   -webkit-box-shadow: 0 0 5px #AA5555;
   -moz-box-shadow: 0 0 5px #AA5555;
@@ -102,7 +116,7 @@ h2 {
   border: 1px solid #AA5555;
 }
 
-/* line 99, ../sass/style.scss */
+/* line 111, ../sass/style.scss */
 #w_1 {
   height: 300px;
 }
@@ -125,16 +139,34 @@ h2 {
     transform: translateX(-100%);
   }
 }
-/* line 128, ../sass/style.scss */
+/* line 140, ../sass/style.scss */
 .anim-in {
   -webkit-animation: animIn 0.6s ease;
   -o-animation: animIn 0.6s ease;
   animation: animIn 0.6s ease;
 }
 
-/* line 134, ../sass/style.scss */
+/* line 146, ../sass/style.scss */
 .anim-out {
   -webkit-animation: animOut 0.6s ease;
   -o-animation: animOut 0.6s ease;
   animation: animOut 0.6s ease;
+}
+
+@media (min-width: 700px) {
+  /* line 155, ../sass/style.scss */
+  .widget-grid {
+    display: flex;
+    flex-direction: row;
+  }
+  /* line 159, ../sass/style.scss */
+  .widget-grid .widget {
+    flex-grow: 1;
+    width: 45%;
+  }
+
+  /* line 165, ../sass/style.scss */
+  .widget {
+    margin: 10px;
+  }
 }

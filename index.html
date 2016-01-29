@@ -4,6 +4,8 @@
   <title>Unikrn Assessment</title>
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
   <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/handlebars.runtime-v4.0.5.js"></script>
+  <script type="text/javascript" src="templates/compiled_templates.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' rel='stylesheet' type='text/css'>
 
   <meta charset="UTF-8">
@@ -13,66 +15,45 @@
 
 <h1>Unikrn Assessment Project</h1>
 
-<div class="button" id="login_button">
+<div id="button_container">
+<button class="button" id="login_button" onclick="login()">
   Log In
+</button>
+<button class="button" id="logout_button" onclick="logout()">
+  Log Out
+</button>
+
 </div>
 
+<div class="widget-container">
 
-<div class="widget" id="w_2">
-  <div class="content">
-    <h2>Alarm</h2>
+  <div class="widget-grid">
 
-
-    Hour (0-23) : Mins (0-59)<br/>
-    <input id="hour_field" title="hour" type="number" min="0" max="23" placeholder="14"> :
-    <input id="minute_field" title="minute" type="number" min="0" max="59" placeholder="30">
-
-    <br/>
-    <button class="button-mini" onclick="setAlarm()">Set</button>
-
-    <div class="alarm-display" id="alarm_display"></div>
-  </div>
-</div>
-
-
-
-<div class="widget" id="w_3">
-  <div class="content">
-    <h2>Profile</h2>
-
-    <img class="profile-pic" src="resources/profile.jpg">
-    <div class="user-name">Chris Loewer</div>
-
-    <div class="links">
-      <div class="left">
-        <a href="http://chrisloewer.com" target="_blank">Website</a><br/>
-        <a href="http://blog.chrisloewer.com" target="_blank">Blog</a><br/>
-      </div>
-      <div class="right">
-        <a href="https://www.linkedin.com/in/chrisloewer" target="_blank">LinkedIn</a><br/>
-        <a href="https://github.com/chrisloewer" target="_blank">Github</a><br/>
-      </div>
+    <div class="widget" id="w_2">
     </div>
 
-    <p class="bio">Full-stack web developer | Amateur coffee aficionado | Longboarder | Film addict | Unikrn hopeful</p>
+
+    <div class="widget" id="w_3">
+    </div>
 
   </div>
-</div>
 
 
-<div class="widget" id="w_1">
-  <div class="slide current" id="slide_1">
-    Widget One - 1
+  <div class="widget" id="w_1">
+    <div class="slide current" id="slide_1">
+      Widget One - 1
+    </div>
+    <div class="slide" id="slide_2">
+      Widget One - 2
+    </div>
+    <div class="slide" id="slide_3">
+      Widget One - 3
+    </div>
+    <div class="slide" id="slide_4">
+      Widget One - 4
+    </div>
   </div>
-  <div class="slide" id="slide_2">
-    Widget One - 2
-  </div>
-  <div class="slide" id="slide_3">
-    Widget One - 3
-  </div>
-  <div class="slide" id="slide_4">
-    Widget One - 4
-  </div>
+
 </div>
 
 
