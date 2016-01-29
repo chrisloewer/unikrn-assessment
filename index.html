@@ -4,6 +4,7 @@
   <title>Unikrn Assessment</title>
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
   <script type="text/javascript" src="js/script.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' rel='stylesheet' type='text/css'>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,10 +18,43 @@
 </div>
 
 
+<div class="widget" id="w_2">
+  <div class="content">
+    <h2>Alarm</h2>
+
+
+    Hour (0-23) : Mins (0-59)<br/>
+    <input id="hour_field" title="hour" type="number" min="0" max="23" placeholder="14"> :
+    <input id="minute_field" title="minute" type="number" min="0" max="59" placeholder="30">
+
+    <br/>
+    <button class="button-mini" onclick="setAlarm()">Set</button>
+
+    <div class="alarm-display" id="alarm_display"></div>
+  </div>
+</div>
+
+
+
 <div class="widget" id="w_3">
   <div class="content">
-    Widget Three
+    <h2>Profile</h2>
 
+    <img class="profile-pic" src="resources/profile.jpg">
+    <div class="user-name">Chris Loewer</div>
+
+    <div class="links">
+      <div class="left">
+        <a href="http://chrisloewer.com" target="_blank">Website</a><br/>
+        <a href="http://blog.chrisloewer.com" target="_blank">Blog</a><br/>
+      </div>
+      <div class="right">
+        <a href="https://www.linkedin.com/in/chrisloewer" target="_blank">LinkedIn</a><br/>
+        <a href="https://github.com/chrisloewer" target="_blank">Github</a><br/>
+      </div>
+    </div>
+
+    <p class="bio">Full-stack web developer | Amateur coffee aficionado | Longboarder | Film addict | Unikrn hopeful</p>
 
   </div>
 </div>
@@ -42,12 +76,6 @@
 </div>
 
 
-
-<div class="widget" id="w_2">
-  <div class="content">
-    Widget Two
-  </div>
-</div>
 
 </body>
 </html>

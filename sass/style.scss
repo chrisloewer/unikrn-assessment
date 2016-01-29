@@ -3,6 +3,15 @@ body {
   padding: 0;
   margin: 0;
   text-align: center;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+a{
+  color: inherit;
+}
+
+h2 {
+  margin: 10px 0;
 }
 
 .button {
@@ -10,6 +19,13 @@ body {
   padding: 20px;
   border: 1px solid black;
   border-radius: 15px;
+}
+.button-mini {
+  display: inline-block;
+  padding: 5px 15px;
+  margin: 15px 0;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 .widget {
@@ -45,12 +61,44 @@ body {
     display: inline-block;
   }
 
+
+  img.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #BBBBBB;
+  }
+
+  .user-name {
+    padding: 10px 0;
+  }
+
+  .links {
+    .left {
+      display: inline-block;
+      text-align: right;
+      padding-right: 10px;
+      border-right: 1px solid black;
+    }
+    .right {
+      display: inline-block;
+      text-align: left;
+      padding-left: 10px;
+      border-left: 1px solid black;
+    }
+  }
   
+  input.error {
+    -webkit-box-shadow: 0 0 5px #AA5555;
+    -moz-box-shadow: 0 0 5px #AA5555;
+    box-shadow: 0 0 5px #AA5555;
+    border: 1px solid #AA5555;
+  }
 }
 
 #w_1 {
   height: 300px;
-  background-color: #000000;
+  //background-color: #000000;
 }
 
 
@@ -68,7 +116,7 @@ body {
 @keyframes animOut {
   from {}
   to {
-    opacity: 0.4;
+    background-color: #555555;
     -webkit-transform: translateX(-100%);
     -moz-transform: translateX(-100%);
     -ms-transform: translateX(-100%);
