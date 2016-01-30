@@ -12,7 +12,7 @@ a{
 }
 
 h2 {
-  margin: 10px 0;
+  margin: 15px 0;
   font-weight: 700;
 }
 
@@ -41,7 +41,7 @@ h2 {
 
 .widget {
   position: relative;
-  min-height: 300px;
+  min-height: 150px;
   margin: 20px 0;
   padding: 20px;
   background-color: #DDDDDD;
@@ -110,7 +110,11 @@ h2 {
 
 #w_1 {
   height: 300px;
-  //background-color: #000000;
+  
+  h2 {
+    position: relative;
+    z-index: 10;
+  }
 }
 
 

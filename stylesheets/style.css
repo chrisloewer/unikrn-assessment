@@ -14,7 +14,7 @@ a {
 
 /* line 14, ../sass/style.scss */
 h2 {
-  margin: 10px 0;
+  margin: 15px 0;
   font-weight: 700;
 }
 
@@ -49,7 +49,7 @@ h2 {
 /* line 42, ../sass/style.scss */
 .widget {
   position: relative;
-  min-height: 300px;
+  min-height: 150px;
   margin: 20px 0;
   padding: 20px;
   background-color: #DDDDDD;
@@ -120,6 +120,11 @@ h2 {
 #w_1 {
   height: 300px;
 }
+/* line 114, ../sass/style.scss */
+#w_1 h2 {
+  position: relative;
+  z-index: 10;
+}
 
 @keyframes animIn {
   from {
@@ -139,14 +144,14 @@ h2 {
     transform: translateX(-100%);
   }
 }
-/* line 140, ../sass/style.scss */
+/* line 144, ../sass/style.scss */
 .anim-in {
   -webkit-animation: animIn 0.6s ease;
   -o-animation: animIn 0.6s ease;
   animation: animIn 0.6s ease;
 }
 
-/* line 146, ../sass/style.scss */
+/* line 150, ../sass/style.scss */
 .anim-out {
   -webkit-animation: animOut 0.6s ease;
   -o-animation: animOut 0.6s ease;
@@ -154,18 +159,18 @@ h2 {
 }
 
 @media (min-width: 700px) {
-  /* line 155, ../sass/style.scss */
+  /* line 159, ../sass/style.scss */
   .widget-grid {
     display: flex;
     flex-direction: row;
   }
-  /* line 159, ../sass/style.scss */
+  /* line 163, ../sass/style.scss */
   .widget-grid .widget {
     flex-grow: 1;
     width: 45%;
   }
 
-  /* line 165, ../sass/style.scss */
+  /* line 169, ../sass/style.scss */
   .widget {
     margin: 10px;
   }

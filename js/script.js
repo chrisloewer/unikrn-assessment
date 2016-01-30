@@ -1,4 +1,8 @@
+// Chris Loewer
+// Unikrn Application
+// January 29 2016
 
+// Initialize variables
 var currentSlide = 1;
 var maxSlide = 4;
 var alarm;
@@ -74,16 +78,18 @@ function setAlarm() {
     alarmDisplay.innerHTML = 'Alarm set for ' + padInt(hour,2) +':'+ padInt(minute, 2) ;
 
     // Persistently store alarm time
-    localStorage.setItem('hour', hour);
-    localStorage.setItem('minute', minute);
+    api_setAlarm(hour, minute);
 
     return true;
+  }
+  else {
+    return false;
   }
 }
 
 // sets alarm according to user's saved alarms
 function updateAlarm() {
-  var a = getAlarm();
+  var a = api_getAlarm();
   if (a) {
     clearTimeout(alarm);
     alarm = setTimeout(function() {
@@ -99,7 +105,7 @@ function updateAlarm() {
 
 }
 
-// gets milliseconds until alarm sounds
+// gets time in milliseconds until alarm sounds
 function calculateAlarm(hour, minute) {
   var d1 = new Date();
   var d2 = new Date(d1.getFullYear(), d1.getMonth(), d1.getDate(), hour, minute, 0, 0);
@@ -119,43 +125,13 @@ function calculateAlarm(hour, minute) {
   return d3;
 }
 
-// checks if user has created an alarm previously
-function getAlarm() {
-  // This is where the logic would go checking if the user had an alarm saved
-  // var a = api_getAlarm();
-  // Instead check localStorage
-
-  var hour = localStorage.getItem('hour');
-  var minute = localStorage.getItem('minute');
-
-  if (hour != null && minute != null) {
-    return {
-      "ms": calculateAlarm(hour, minute),
-      "hour": hour,
-      "minute": minute
-    };
-  }
-  else {
-    return false;
-  }
-}
 
 // ------------------------------------ LOGIN FUNCTIONALITY ------------------------------------- //
 
 function login() {
-  // This is where logic would go to check if login information was correct and in database
-  // var user = api_getUser();
+  var user = api_getUser();
 
-  var user = {
-    "name": "Christopher Loewer",
-    "img": "resources/profile.jpg",
-    "website": "http://chrisloewer.com",
-    "blog": "http://blog.chrisloewer.com",
-    "linkedin": "https://www.linkedin.com/in/chrisloewer",
-    "github": "https://github.com/chrisloewer",
-    "bio": "Full-stack web developer | Amateur coffee aficionado | Longboarder | Film addict | Unikrn hopeful"
-  };
-
+  // Persist info locally for user who logged in
   localStorage.setItem("user", JSON.stringify(user));
 
   // Reload widgets that change on login
@@ -167,6 +143,7 @@ function login() {
   return true;
 }
 
+// Gets user if already logged in
 function getUser() {
   var user = localStorage.getItem("user");
   if(user != null) {
@@ -178,12 +155,14 @@ function getUser() {
 }
 
 function logout() {
-
   // disable alarm
   clearTimeout(alarm);
 
-  // clear user data
-  localStorage.clear();
+  // Clear user data
+  // localStorage.clear();
+  // Normally would include clearing locally saved alarm time, but since there is no database
+  // I chose to keep alarm saved for future login
+  localStorage.removeItem('user');
 
   // Reload widgets that change on login
   loadAlarmWidget();
@@ -192,8 +171,7 @@ function logout() {
 }
 
 function updateButton() {
-  var user = getUser();
-  if (user) {
+  if (getUser()) {
     removeClass(document.getElementById('login_button'), 'current');
     addClass(document.getElementById('logout_button'), 'current');
   }
@@ -206,13 +184,14 @@ function updateButton() {
 
 // ------------------------------------ HANDLEBARS UTILITIES ------------------------------------ //
 
-
 function loadAlarmWidget() {
   var user = getUser();
   if (user) {
+    // logged in: alarms for user
     insertJsonTemplate('w_2', 'time_widget', user);
   }
   else {
+    // logged out: request they login
     insertJsonTemplate('w_2', 'time_loggedOut', {});
   }
 }
@@ -220,29 +199,21 @@ function loadAlarmWidget() {
 function loadProfileWidget() {
   var user = getUser();
   if (user) {
+    // logged in: display user profile
     insertJsonTemplate('w_3', 'profile_widget', user);
   }
   else {
+    // logged out: request they login
     insertJsonTemplate('w_3', 'profile_loggedOut', {});
   }
 }
 
-
-// Data is passed as a string
-// Inserts into elementName, a template populated by data
-function insertTemplate(elementId, templateName, data) {
-  var element = document.getElementById(elementId);
-  var template = Handlebars.templates[templateName];
-  var jsonData = JSON.parse(data);
-  element.innerHTML = template(jsonData);
-}
-
+// Inserts into elementName, a template populated by json
 function insertJsonTemplate(elementId, templateName, json) {
   var element = document.getElementById(elementId);
   var template = Handlebars.templates[templateName];
   element.innerHTML = template(json);
 }
-
 
 
 // ------------------------------------ SCROLLING CARROUSEL ------------------------------------ //
@@ -260,10 +231,10 @@ function nextSlide() {
     currentSlide = 0;
   }
 
+  // Handle animating slide in and out
   hidePage(initialSlide);
   addClass(secondSlide, 'current');
   addClass(secondSlide, 'anim-in');
-
   secondSlide.addEventListener('animationend', animHelper);
   function animHelper() {
     removeClass(this, 'anim-in');
@@ -283,10 +254,8 @@ function reset() {
   removeClass(this, 'current');
   removeClass(this, 'anim-in');
   removeClass(this, 'anim-out');
-
   this.removeEventListener('animationend', reset);
 }
-
 
 
 // ------------------------------------ GENERAL UTILITIES ------------------------------------ //
@@ -309,19 +278,59 @@ function removeClass(element, className) {
   }
 }
 
-function toggleClass(element, className) {
-  if(element.classList.contains(className)) {
-    element.classList.remove(className);
-  }
-  else {
-    element.classList.add(className);
-  }
-}
-
+// Adds leading zeros if necessary
 function padInt(int, len){
   var str = int + '';
   while (str.length < len) {
     str = '0' + str;
   }
   return str;
+}
+
+
+// ------------------------------------ API FUNCTIONALITY ------------------------------------ //
+
+function api_getUser() {
+  // This is where the api would check the user database to ensure that user credentials are correct
+  // and returns the appropriate user
+  // var usr = api.getUser();
+  // Instead return an example user
+
+  return {
+    "name": "Christopher Loewer",
+    "img": "resources/profile.jpg",
+    "website": "http://chrisloewer.com",
+    "blog": "http://blog.chrisloewer.com",
+    "linkedin": "https://www.linkedin.com/in/chrisloewer",
+    "github": "https://github.com/chrisloewer",
+    "bio": "Full-stack web developer | Amateur coffee aficionado | Longboarder | Film addict | Unikrn hopeful"
+  };
+}
+
+// checks if user has created an alarm previously
+function api_getAlarm() {
+  // This is where the logic would go checking if the user had an alarm saved
+  // var a = api.getAlarm();
+  // Instead check localStorage
+
+  var hour = localStorage.getItem('hour');
+  var minute = localStorage.getItem('minute');
+
+  if (hour != null && minute != null) {
+    return {
+      "ms": calculateAlarm(hour, minute),
+      "hour": hour,
+      "minute": minute
+    };
+  }
+  else {
+    return false;
+  }
+}
+
+function api_setAlarm(hour, minute) {
+  // This would update the database, storing the alarm for the logged-in user
+  // Instead use localStorage
+  localStorage.setItem('hour', hour);
+  localStorage.setItem('minute', minute);
 }
