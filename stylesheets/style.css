@@ -18,21 +18,32 @@ h2 {
   font-weight: 700;
 }
 
-/* line 19, ../sass/style.scss */
+/* line 22, ../sass/style.scss */
 .button {
   display: none;
   padding: 20px;
+  margin-bottom: 20px;
   border: 1px solid black;
   border-radius: 15px;
 }
 
-/* line 25, ../sass/style.scss */
+/* line 29, ../sass/style.scss */
 .button.current {
   display: inline-block;
 }
 
-/* line 29, ../sass/style.scss */
-.button-mini {
+/* line 32, ../sass/style.scss */
+.button:hover {
+  background-color: #BBBBBB;
+}
+
+/* line 35, ../sass/style.scss */
+.button:active {
+  background-color: #999999;
+}
+
+/* line 39, ../sass/style.scss */
+.button.mini {
   display: inline-block;
   padding: 5px 15px;
   margin: 15px 0;
@@ -40,13 +51,13 @@ h2 {
   border-radius: 10px;
 }
 
-/* line 37, ../sass/style.scss */
+/* line 47, ../sass/style.scss */
 .widget-container {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* line 42, ../sass/style.scss */
+/* line 52, ../sass/style.scss */
 .widget {
   position: relative;
   min-height: 150px;
@@ -55,12 +66,12 @@ h2 {
   background-color: #DDDDDD;
   overflow-x: hidden;
 }
-/* line 50, ../sass/style.scss */
+/* line 60, ../sass/style.scss */
 .widget .content {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 55, ../sass/style.scss */
+/* line 65, ../sass/style.scss */
 .widget .slide {
   display: none;
   position: absolute;
@@ -71,44 +82,54 @@ h2 {
   width: 100%;
   background-color: #DDDDDD;
 }
-/* line 65, ../sass/style.scss */
-.widget .slide::before {
-  content: '';
-  display: inline-block;
+/* line 75, ../sass/style.scss */
+.widget .slide .content-container {
   height: 100%;
+  position: relative;
+}
+/* line 79, ../sass/style.scss */
+.widget .slide .content-container .slide-content {
+  display: inline-block;
   vertical-align: middle;
 }
-/* line 71, ../sass/style.scss */
+/* line 85, ../sass/style.scss */
+.widget .slide .content-container::before {
+  content: '';
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 94, ../sass/style.scss */
 .widget .slide.current {
   display: inline-block;
 }
-/* line 76, ../sass/style.scss */
+/* line 99, ../sass/style.scss */
 .widget img.profile-pic {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   background-color: #BBBBBB;
 }
-/* line 83, ../sass/style.scss */
+/* line 106, ../sass/style.scss */
 .widget .user-name {
   padding: 10px 0;
   font-weight: 400;
 }
-/* line 89, ../sass/style.scss */
+/* line 112, ../sass/style.scss */
 .widget .links .left {
   display: inline-block;
   text-align: right;
   padding-right: 10px;
   border-right: 1px solid black;
 }
-/* line 95, ../sass/style.scss */
+/* line 118, ../sass/style.scss */
 .widget .links .right {
   display: inline-block;
   text-align: left;
   padding-left: 10px;
   border-left: 1px solid black;
 }
-/* line 103, ../sass/style.scss */
+/* line 126, ../sass/style.scss */
 .widget input.error {
   -webkit-box-shadow: 0 0 5px #AA5555;
   -moz-box-shadow: 0 0 5px #AA5555;
@@ -116,11 +137,11 @@ h2 {
   border: 1px solid #AA5555;
 }
 
-/* line 111, ../sass/style.scss */
+/* line 134, ../sass/style.scss */
 #w_1 {
   height: 300px;
 }
-/* line 114, ../sass/style.scss */
+/* line 137, ../sass/style.scss */
 #w_1 h2 {
   position: relative;
   z-index: 10;
@@ -144,14 +165,14 @@ h2 {
     transform: translateX(-100%);
   }
 }
-/* line 144, ../sass/style.scss */
+/* line 167, ../sass/style.scss */
 .anim-in {
   -webkit-animation: animIn 0.6s ease;
   -o-animation: animIn 0.6s ease;
   animation: animIn 0.6s ease;
 }
 
-/* line 150, ../sass/style.scss */
+/* line 173, ../sass/style.scss */
 .anim-out {
   -webkit-animation: animOut 0.6s ease;
   -o-animation: animOut 0.6s ease;
@@ -159,18 +180,18 @@ h2 {
 }
 
 @media (min-width: 700px) {
-  /* line 159, ../sass/style.scss */
+  /* line 182, ../sass/style.scss */
   .widget-grid {
     display: flex;
     flex-direction: row;
   }
-  /* line 163, ../sass/style.scss */
+  /* line 186, ../sass/style.scss */
   .widget-grid .widget {
     flex-grow: 1;
     width: 45%;
   }
 
-  /* line 169, ../sass/style.scss */
+  /* line 192, ../sass/style.scss */
   .widget {
     margin: 10px;
   }

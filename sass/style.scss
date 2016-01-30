@@ -15,18 +15,28 @@ h2 {
   margin: 15px 0;
   font-weight: 700;
 }
+h4 {
+  //display: inline-block;
+}
 
 .button {
   display: none;
   padding: 20px;
+  margin-bottom: 20px;
   border: 1px solid black;
   border-radius: 15px;
 }
 .button.current {
   display: inline-block;
 }
+.button:hover {
+  background-color: #BBBBBB;
+}
+.button:active {
+  background-color: #999999;
+}
 
-.button-mini {
+.button.mini {
   display: inline-block;
   padding: 5px 15px;
   margin: 15px 0;
@@ -61,13 +71,26 @@ h2 {
     height: 100%;
     width: 100%;
     background-color: #DDDDDD;
+
+    .content-container {
+      height: 100%;
+      position: relative;
+
+      .slide-content {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    
+    .content-container::before {
+      content: '';
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
-  .slide::before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-  }
+
+
   .slide.current {
     display: inline-block;
   }

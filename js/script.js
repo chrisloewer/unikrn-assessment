@@ -4,7 +4,7 @@
 
 // Initialize variables
 var currentSlide = 1;
-var maxSlide = 4;
+var maxSlide = 3;
 var alarm;
 
 

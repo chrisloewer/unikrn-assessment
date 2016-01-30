@@ -26,6 +26,6 @@ templates['time_loggedOut'] = template({"compiler":[7,">= 4.0.0"],"main":functio
     return "<div class=\"content\">\r\n  <h2>Alarm</h2>\r\n\r\n  <p class=\"bio\">You must log in to set alarms.</p>\r\n</div>";
 },"useData":true});
 templates['time_widget'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"content\">\r\n  <h2>Alarm</h2>\r\n\r\n  Hour (0-23) : Mins (0-59)<br/>\r\n  <input id=\"hour_field\" title=\"hour\" type=\"number\" min=\"0\" max=\"23\" placeholder=\"14\"> :\r\n  <input id=\"minute_field\" title=\"minute\" type=\"number\" min=\"0\" max=\"59\" placeholder=\"30\">\r\n\r\n  <br/>\r\n  <button class=\"button-mini\" onclick=\"setAlarm()\">Set</button>\r\n\r\n  <div class=\"alarm-display\" id=\"alarm_display\"></div>\r\n</div>\r\n";
+    return "<div class=\"content\">\r\n  <h2>Alarm</h2>\r\n\r\n  Hour (0-23) : Mins (0-59)<br/>\r\n  <input id=\"hour_field\" title=\"hour\" type=\"number\" min=\"0\" max=\"23\" placeholder=\"14\"> :\r\n  <input id=\"minute_field\" title=\"minute\" type=\"number\" min=\"0\" max=\"59\" placeholder=\"30\">\r\n\r\n  <br/>\r\n  <button class=\"button mini\" onclick=\"setAlarm()\">Set</button>\r\n\r\n  <div class=\"alarm-display\" id=\"alarm_display\"></div>\r\n</div>\r\n";
 },"useData":true});
 })();
