@@ -64,6 +64,7 @@ function setAlarm() {
     var hour = parseInt(document.getElementById('hour_field').value);
     var minute = parseInt(document.getElementById('minute_field').value);
 
+    // Time until alarm will sound
     var time = calculateAlarm(hour, minute);
 
     clearTimeout(alarm);
@@ -143,7 +144,7 @@ function login() {
   return true;
 }
 
-// Gets user if already logged in
+// Gets user information if already logged in
 function getUser() {
   var user = localStorage.getItem("user");
   if(user != null) {
@@ -159,9 +160,9 @@ function logout() {
   clearTimeout(alarm);
 
   // Clear user data
-  // localStorage.clear();
   // Normally would include clearing locally saved alarm time, but since there is no database
   // I chose to keep alarm saved for future login
+  // Instead of: localStorage.clear();
   localStorage.removeItem('user');
 
   // Reload widgets that change on login
@@ -294,7 +295,7 @@ function api_getUser() {
   // This is where the api would check the user database to ensure that user credentials are correct
   // and returns the appropriate user
   // var usr = api.getUser();
-  // Instead return an example user
+  // Instead, return an example user
 
   return {
     "name": "Christopher Loewer",
@@ -311,7 +312,7 @@ function api_getUser() {
 function api_getAlarm() {
   // This is where the logic would go checking if the user had an alarm saved
   // var a = api.getAlarm();
-  // Instead check localStorage
+  // Instead, check localStorage
 
   var hour = localStorage.getItem('hour');
   var minute = localStorage.getItem('minute');
@@ -330,7 +331,7 @@ function api_getAlarm() {
 
 function api_setAlarm(hour, minute) {
   // This would update the database, storing the alarm for the logged-in user
-  // Instead use localStorage
+  // Instead, use localStorage
   localStorage.setItem('hour', hour);
   localStorage.setItem('minute', minute);
 }

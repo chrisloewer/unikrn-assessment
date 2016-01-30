@@ -15,9 +15,6 @@ h2 {
   margin: 15px 0;
   font-weight: 700;
 }
-h4 {
-  //display: inline-block;
-}
 
 .button {
   display: none;
@@ -81,7 +78,6 @@ h4 {
         vertical-align: middle;
       }
     }
-    
     .content-container::before {
       content: '';
       height: 100%;
@@ -90,11 +86,9 @@ h4 {
     }
   }
 
-
   .slide.current {
     display: inline-block;
   }
-
 
   img.profile-pic {
     width: 150px;
